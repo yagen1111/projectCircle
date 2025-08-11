@@ -12,7 +12,6 @@ include "env" {
 }
 
 inputs = {
-<<<<<<< HEAD
   name = "${include.env.locals.env}-${include.env.locals.project}-sg"
   description = "Security group for EKS cluster"
   
@@ -35,7 +34,7 @@ inputs = {
       cidr_blocks = include.env.locals.vpc_cidr
     },
     {
-      from_port   = 22
+      from_port   = 22      
       to_port     = 22
       protocol    = "tcp"
       description = "SSH access to nodes"
@@ -78,11 +77,4 @@ dependency "vpc" {
   mock_outputs = {
     vpc_id = "vpc-00000000"
   }
-=======
-  name = "${local.env}-${local.project}-sg"
-  
-  vpc_id = dependency.vpc.outputs.vpc_id
-  
-  tags = include.env.locals.tags
->>>>>>> 95a8bc319c2315d8885f813c226b2a5dccb77e37
 }

@@ -27,14 +27,3 @@ inputs = {
   
   tags = include.env.locals.tags
 }
-<<<<<<< HEAD
-=======
-
-# Output the user ARN for use in other configurations
-outputs = {
-  user_arn = {
-    description = "ARN of the IAM user"
-    value       = module.iam_user.iam_user_arn
-  }
-}
->>>>>>> 95a8bc319c2315d8885f813c226b2a5dccb77e37

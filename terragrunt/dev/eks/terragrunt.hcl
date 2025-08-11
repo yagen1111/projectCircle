@@ -12,14 +12,10 @@ include "env" {
 }
 
 inputs = {
-<<<<<<< HEAD
   name                                  = include.env.locals.eks_cluster_name
-  cluster_version                       = include.env.locals.eks_cluster_version
-=======
   cluster_version                       = include.env.locals.eks_cluster_version
   cluster_name                          = include.env.locals.eks_cluster_name
   
->>>>>>> 95a8bc319c2315d8885f813c226b2a5dccb77e37
   vpc_id                                = dependency.vpc.outputs.vpc_id
   subnet_ids                            = dependency.vpc.outputs.private_subnets
   
@@ -54,20 +50,9 @@ dependency "iam" {
   }
 }
 
-<<<<<<< HEAD
-
-
-=======
 generate "provider-local" {
   path      = "provider-local.tf"
   if_exists = "overwrite"
   contents  = file("../../../provider-config/eks/eks.tf")
 }
 
-tags = {
-  Name            = "${local.env}-${local.project}"
-  Environment     = "${local.env}"
-  ManagedBy       = "terragrunt"
-  Project         = local.project
-}
->>>>>>> 95a8bc319c2315d8885f813c226b2a5dccb77e37
