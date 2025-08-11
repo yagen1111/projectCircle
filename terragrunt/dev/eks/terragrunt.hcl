@@ -50,9 +50,5 @@ dependency "iam" {
   }
 }
 
-generate "provider-local" {
-  path      = "provider-local.tf"
-  if_exists = "overwrite"
-  contents  = file("../../../provider-config/eks/eks.tf")
-}
+
 
