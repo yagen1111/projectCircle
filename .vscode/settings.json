@@ -1,25 +1,13 @@
-<<<<<<< HEAD
 {
   "files.associations": {
-    "*.hcl": "terraform",
-    "terragrunt.hcl": "terraform"
+    "*.tf": "terraform"
   },
   "terraform.experimentalFeatures.validateOnSave": true,
-  "terraform.experimentalFeatures.prefillRequiredFields": true
+  "terraform.experimentalFeatures.prefillRequiredFields": true,
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  }
 }
 
 
-
-=======
-{
-  "files.associations": {
-    "*.hcl": "terraform",
-    "terragrunt.hcl": "terraform"
-  },
-  "terraform.experimentalFeatures.validateOnSave": true,
-  "terraform.experimentalFeatures.prefillRequiredFields": true
-}
-
-
-
->>>>>>> 95a8bc319c2315d8885f813c226b2a5dccb77e37
