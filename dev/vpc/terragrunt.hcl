@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../infra-modules/vpc"
+  source = "git@github.com:yagen1111/infrastructure-modules.git//vpc?ref=vpc-v0.1"
 }
 include "root"{
   path = find_in_parent_folders()
