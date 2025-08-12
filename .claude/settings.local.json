@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(wsl ls:*)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}

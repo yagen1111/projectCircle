@@ -21,11 +21,11 @@ inputs = {
     node_group = {
         general = {
             capacity_type = "ON_DEMAND"
-            instance_types = ["t3.medium"]
+            instance_types = ["t3.large"]
             scaling_config = {
-                desired_size = 1
-                max_size = 5
-                min_size = 1
+                desired_size = 2
+                max_size = 10
+                min_size = 2
             }
         }
 }

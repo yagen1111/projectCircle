@@ -5,3 +5,4 @@
 *.tfplan
 *.tfvars
 .terraform.lock.hcl
+.claude
