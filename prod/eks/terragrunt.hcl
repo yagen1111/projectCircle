@@ -1,5 +1,5 @@
 terraform {
-    source = "git@github.com:yagen1111/infrastructure-modules.git//eks?ref=eks-v0.1"
+    source = "git::git@github.com:yagen1111/infrastructure-modules.git//eks?ref=main"
 }
 
 include "root"{

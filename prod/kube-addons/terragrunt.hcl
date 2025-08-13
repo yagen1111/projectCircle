@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:yagen1111/infrastructure-modules.git//kube-addon?ref=addons-v0.1"
+  source = "git::git@github.com:yagen1111/infrastructure-modules.git//kube-addon?ref=main"
 }
 
 include "root" {
