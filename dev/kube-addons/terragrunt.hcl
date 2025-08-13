@@ -16,6 +16,8 @@ inputs = {
   eks_name = dependency.eks.outputs.eks_name
   openid_provider_arn = dependency.eks.outputs.openid_connect_provider_arn
   enable_cluster_autoscaler      = true
+  enable_ebs_csi_driver = true
+  ebs_csi_driver_helm_version = "2.35.1"
 }
 
 dependency "eks" {

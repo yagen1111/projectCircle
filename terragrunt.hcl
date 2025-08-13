@@ -20,9 +20,6 @@ generate "provider" {
 provider "aws" {
     region = "us-east-1"
 
-    assume_role {
-        role_arn = "arn:aws:iam::559050211440:role/_admin_terraform"
-    }
 }
 EOF
 }

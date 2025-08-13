@@ -17,6 +17,8 @@ inputs = {
     eks_version = "1.31"
     subnet_ids = dependency.vpc.outputs.private_subnets
     eks_name = "eks"
+    enable_ebs_csi_driver = true
+    ebs_csi_driver_policy_attachment = true
 
     node_group = {
         general = {
