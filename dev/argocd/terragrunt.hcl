@@ -13,6 +13,7 @@ include "env" {
 
 inputs = {
   env = include.env.locals.env
+  eks_name = dependency.eks.outputs.eks_name
 }
 
 dependency "eks" {
@@ -27,11 +28,11 @@ generate "k8s_helm_providers" {
   if_exists = "overwrite"
   contents = <<EOF
 data "aws_eks_cluster" "eks" {
-  name = dependency.eks.outputs.eks_name
+  name = var.eks_name
 }
 
 data "aws_eks_cluster_auth" "eks" {
-  name = dependency.eks.outputs.eks_name
+  name = var.eks_name
 }
 
 provider "kubernetes" {

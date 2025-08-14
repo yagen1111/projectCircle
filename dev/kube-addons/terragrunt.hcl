@@ -18,6 +18,9 @@ inputs = {
   enable_cluster_autoscaler      = true
   enable_ebs_csi_driver = true
   ebs_csi_driver_helm_version = "2.35.1"
+  enable_aws_load_balancer_controller = true
+  enable_ingress_nginx = true
+  ssl_certificate_arn = "arn:aws:acm:us-east-1:559050211440:certificate/3ed66a3d-b1de-478e-8d29-da9562384a71"
 }
 
 dependency "eks" {
