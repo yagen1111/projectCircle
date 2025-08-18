@@ -12,8 +12,10 @@ include "env"{
 
 inputs = {
   env = include.env.locals.env
+  region = include.env.locals.region 
   cluster_autoscaler_helm_version = "9.28.0"
   eks_name = dependency.eks.outputs.eks_name
+  vpc_id = dependency.vpc.outputs.vpc_id
   openid_provider_arn = dependency.eks.outputs.openid_connect_provider_arn
   enable_cluster_autoscaler      = true
   enable_ebs_csi_driver = true
@@ -21,6 +23,7 @@ inputs = {
   enable_aws_load_balancer_controller = true
   enable_ingress_nginx = true
   ssl_certificate_arn = "arn:aws:acm:us-east-1:559050211440:certificate/3ed66a3d-b1de-478e-8d29-da9562384a71"
+  enable_external_secrets = true
 }
 
 dependency "eks" {
@@ -29,6 +32,12 @@ dependency "eks" {
         eks_name = "dev-eks"
         openid_connect_provider_arn = "arn:aws:iam::123456789012:oidc-provider"
     }
+}
+dependency "vpc" {
+  config_path = "../vpc"
+  mock_outputs = {
+    vpc_id = "vpc-12345"
+  }
 }
 
 generate "helm_provider" {

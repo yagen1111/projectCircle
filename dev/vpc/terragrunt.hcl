@@ -19,12 +19,12 @@ inputs = {
     private_subnets = ["192.168.64.0/19", "192.168.96.0/19"]
 
     private_subnets_tags = {
-        "kubernetes.io/role/elb" = "1"
+        "kubernetes.io/role/internal-elb" = "1"
         "kubernetes.io/cluster/dev-eks" = "1"
     }
 
     public_subnets_tags = {
-      "kubernetes.io/role/internal-elb" = "1"
+      "kubernetes.io/role/elb" = "1"
       "kubernetes.io/cluster/dev-eks" = "1"
     }
 }
