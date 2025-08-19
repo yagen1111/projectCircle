@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:yagen1111/infrastructure-modules.git//kube-addon?ref=main"
+  source = "git::git@github.com:yagen1111/infrastructure-modules.git//dev/kube-addon?ref=main"
 }
 
 include "root" {
@@ -10,12 +10,30 @@ include "env"{
     expose = true
 }
 
+dependency "eks" {
+    config_path = "../eks"
+    mock_outputs_allowed_terraform_commands = ["validate", "plan", "init"]
+    mock_outputs = {
+        eks_name = "dev-eks"
+        openid_connect_provider_arn = "arn:aws:iam::123456789012:oidc-provider"
+    }
+}
+dependency "vpc" {
+  config_path = "../vpc"
+  mock_outputs_allowed_terraform_commands = ["validate", "plan", "init"]
+  mock_outputs = {
+    vpc_id = "vpc-12345"
+    private_subnets = ["subnet-1234", "subnet-5678"]
+  }
+}
+
 inputs = {
   env = include.env.locals.env
   region = include.env.locals.region 
   cluster_autoscaler_helm_version = "9.28.0"
   eks_name = dependency.eks.outputs.eks_name
   vpc_id = dependency.vpc.outputs.vpc_id
+  private_subnets = dependency.vpc.outputs.private_subnets
   openid_provider_arn = dependency.eks.outputs.openid_connect_provider_arn
   enable_cluster_autoscaler      = true
   enable_ebs_csi_driver = true
@@ -26,19 +44,7 @@ inputs = {
   enable_external_secrets = true
 }
 
-dependency "eks" {
-    config_path = "../eks"
-    mock_outputs = {
-        eks_name = "dev-eks"
-        openid_connect_provider_arn = "arn:aws:iam::123456789012:oidc-provider"
-    }
-}
-dependency "vpc" {
-  config_path = "../vpc"
-  mock_outputs = {
-    vpc_id = "vpc-12345"
-  }
-}
+
 
 generate "helm_provider" {
   path = "helm_provider.tf"

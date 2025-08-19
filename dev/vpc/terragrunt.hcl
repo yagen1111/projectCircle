@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:yagen1111/infrastructure-modules.git//vpc?ref=main"
+  source = "git::git@github.com:yagen1111/infrastructure-modules.git//dev/vpc?ref=main"
 }
 include "root"{
   path = find_in_parent_folders()
@@ -28,4 +28,5 @@ inputs = {
       "kubernetes.io/cluster/dev-eks" = "1"
     }
 }
+
 

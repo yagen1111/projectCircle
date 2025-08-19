@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:yagen1111/infrastructure-modules.git//argocd?ref=main"
+  source = "git@github.com:yagen1111/infrastructure-modules.git//prod/argocd?ref=main"
 }
 
 include "root" {
@@ -13,12 +13,13 @@ include "env" {
 
 inputs = {
   env = include.env.locals.env
+  eks_name = dependency.eks.outputs.eks_name
 }
 
 dependency "eks" {
   config_path = "../eks"
   mock_outputs = {
-    eks_name = "prod-eks"
+    eks_name = "dev-eks"
   }
 }
 
@@ -27,11 +28,11 @@ generate "k8s_helm_providers" {
   if_exists = "overwrite"
   contents = <<EOF
 data "aws_eks_cluster" "eks" {
-  name = dependency.eks.outputs.eks_name
+  name = var.eks_name
 }
 
 data "aws_eks_cluster_auth" "eks" {
-  name = dependency.eks.outputs.eks_name
+  name = var.eks_name
 }
 
 provider "kubernetes" {

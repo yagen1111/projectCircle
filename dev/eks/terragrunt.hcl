@@ -1,5 +1,5 @@
 terraform {
-    source = "git::git@github.com:yagen1111/infrastructure-modules.git//eks?ref=main"
+    source = "git::git@github.com:yagen1111/infrastructure-modules.git//dev/eks?ref=main"
 }
 
 include "root"{
@@ -14,7 +14,7 @@ include "env" {
 }
 inputs = {
     env = include.env.locals.env
-    eks_version = "1.31"
+    eks_version = "1.32"
     subnet_ids = dependency.vpc.outputs.private_subnets
     eks_name = "eks"
     enable_ebs_csi_driver = true

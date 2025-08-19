@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:yagen1111/infrastructure-modules.git//argocd?ref=main"
+  source = "git@github.com:yagen1111/infrastructure-modules.git//dev/argocd?ref=main"
 }
 
 include "root" {
